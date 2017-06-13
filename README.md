@@ -157,15 +157,12 @@ mbed compile --source PROJECT_NAME --source duer-os -DBD_FEATURE_ENABLE_OTA --so
 直接将编出的工程文件烧录到板子中即可。具体方法有(建议采用第一种)：
 
  - 通过板子自带命令loady
- 
-     1.  连接串口工具；
-     2. 在串口终端出现“count_left=0”之前输入回车，会出现“Boot abort”；
-     3. 输入loady指令，等待出现”Ready for binary”后，右键点击选择传输，选择YMODEM，用YMODEM发送；
-     4. 选择并传输对应bin文件；
-     
+1.  连接串口工具；
+2. 在串口终端出现“count_left=0”之前输入回车，会出现“Boot abort”；
+3. 输入loady指令，等待出现”Ready for binary”后，右键点击选择传输，选择YMODEM，用YMODEM发送；
+4. 选择并传输对应bin文件；
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/d0a99806d66df5feb37c8319ea4e516995027a41)
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/4cb71157f645ccd8a4a7719c329e6e774ae75d35)
-
  -  通过Flashtest工具
  RDA Flashtest工具打开后如下，参照图示进行设置：
  ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/1c0d150f55a7afd51553f53239d585ed694334d4)
@@ -192,13 +189,17 @@ Waiting for plug in...
 本节将详细介绍DuerOS提供给开发者的主要接口类与API，类中未提供说明的public API开发者可忽略，之后会做优化。
 ## Scheduler类
 **所属头文件**
+
 baidu_ca_scheduler.h
 **功能描述**
+
 单例类，封装CA模块，提供与云端的交互功能
 ### static Scheduler &obtain()
 **功能描述**
+
 获取Scheduler实例，第一次调用时，会初始化CA模块
 **参数**
+
 无
 **返回值**
 Scheduler对象
