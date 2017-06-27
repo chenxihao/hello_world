@@ -19,11 +19,11 @@ mbed CLI是ARM提供的mbed命令行编译工具，下面将对它做简单的�
 ### 依赖工具
 * **Python** 要求使用Python2.7.11以上版本，不兼容Python3
 * **Git 和 Mercurial** mbed CLI同时支持Git和Mercurial 的代码库，所以两者都需要
- * Git - 支持1.9.5版本及以上.
- * Mercurial - 支持2.2.2版本及以上.
+  * Git - 支持1.9.5版本及以上.
+  * Mercurial - 支持2.2.2版本及以上.
 * **编译器或IDE工具链** 编译mbed-os工程，以下工具链可任择其一，DuerOS Light SDK目前仅支持ARM Compiler 5工具链
- * 编译器: GCC ARM, ARM Compiler 5, IAR.
- * IDE: Keil uVision, DS-5, IAR Workbench.
+  * 编译器: GCC ARM, ARM Compiler 5, IAR.
+  * IDE: Keil uVision, DS-5, IAR Workbench.
  
 mbed CLI的依赖工具请自行安装好，可参照ARM提供的[视频教程](https://www.youtube.com/watch?v=cM0dFoTuU14)
 ### 安装mbed CLI
