@@ -95,10 +95,9 @@ DuerOS Light SDK是基于mbed-os的轻量级设备解决方案。DuerOS Light SD
 # 4. 设备端开发
 为了能让开发者迅速的掌握使用DuerOS Light SDK开发项目，下面将详细介绍一下设备端开发中的各个重要步骤。
 ## 4.1 创建工程
-
 1. 创建工程目录，并将DuerOS Light SDK包解压到该目录，目录结构如下：
 
-![图片](http://bos.nj.bpc.baidu.com/v1/agroup/333b3b78e636b719dfcdb0dcf307e05cf3868ab7)
+![图片](http://bos.nj.bpc.baidu.com/v1/agroup/d885abf72b2a1b1285baf471fb05e7c7d3a0e0c5)
 
 2. 在工程目录下创建存放开发者自己代码的目录。并在该目录下，创建一个mbed_app.json文件用于配置设备相关的信息，mbed_app.json示例如下：
 ```
@@ -172,7 +171,6 @@ mbed compile --source PROJECT_NAME --source dueros-light -DBD_FEATURE_ENABLE_OTA
      2. 在串口终端出现“count_left=0”之前输入回车，会出现“Boot abort”；
      3. 输入loady指令，等待出现”Ready for binary”后，右键点击选择传输，选择YMODEM，用YMODEM发送；
      4. 选择并传输对应bin文件；
-
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/d0a99806d66df5feb37c8319ea4e516995027a41)
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/4cb71157f645ccd8a4a7719c329e6e774ae75d35)
 
@@ -202,16 +200,18 @@ Waiting for plug in...
 **所属头文件**
 
 baidu_ca_scheduler.h
-**功能描述**
 
+**功能描述**
 单例类，封装CA模块，提供与云端的交互功能
 ### static Scheduler &instance()
 **功能描述**
 
 获取Scheduler实例，第一次调用时，会初始化CA模块
+
 **参数**
 
 无
+
 **返回值**
 
 Scheduler对象
@@ -219,6 +219,7 @@ Scheduler对象
 **功能描述**
 
 设置事件监听者
+
 **参数**
 
 |类型|名称|描述|
@@ -228,6 +229,7 @@ Scheduler对象
 **返回值**
 
 0：成功，-1：失败
+
 **其它说明**
 
 IOnEvent定义如下：
@@ -259,7 +261,9 @@ public:
 ```
 ### int add_controll_points(const bca_res_t list_res[], bca_size_t list_res_size)
 **功能描述**
+
 设置云端控制点，提供云端对设备端的回调点
+
 **参数**
 
 |类型|名称|描述|
@@ -268,7 +272,9 @@ public:
 |bca_size_t |list_res_size|控制点数组大小|
 
 **返回值**
+
 0：成功，-1：失败
+
 **其它说明**
 bca_res_t 是一个结构体，定义如下
 ```
@@ -332,21 +338,34 @@ Scheduler::instance().add_controll_points(res, sizeof(res) / sizeof(res[0]));
 ```
 ### int start()
 **功能描述**
+
 开始与云端建立连接
+
 **参数**
+
 无
+
 **返回值**
+
 0：成功，-1：失败
 ### int stop()
 **功能描述**
+
 结束与云端的连接
+
 **参数**
+
 无
+
 **返回值**
+
 0：成功，-1：失败
+
 ### int report(const Object &data)
 **功能描述**
+
 向云端上传数据
+
 **参数**
 
 |类型|名称|描述|
@@ -354,7 +373,9 @@ Scheduler::instance().add_controll_points(res, sizeof(res) / sizeof(res[0]));
 |const Object& |data|各种数据可以按key-value的形式放入Object对象|
 
 **返回值**
+
 0：成功，-1：失败
+
 **示例代码**
 ```
 duer::Object data;
@@ -363,7 +384,9 @@ duer::Scheduler::instance().report(data);
 ```
 ### int send_content(const void* data, size_t size, bool eof = false)
 **功能描述**
+
 向云端上传语音数据，数据可分多次传输，最后一次传输需将eof参数设为true
+
 **参数**
 
 |类型|名称|描述|
@@ -373,10 +396,13 @@ duer::Scheduler::instance().report(data);
 |bool|eof|默认值为false，为true时表示数据为结束部分|
 
 **返回值**
+
 0：成功，-1：失败
 ### int response(const bca_msg_t* req, int msg_code, const char* payload = NULL)
 **功能描述**
+
 对云端的调用做出回复，在调用点函数中使用
+
 **参数**
 
 |类型|名称|描述|
@@ -386,7 +412,9 @@ duer::Scheduler::instance().report(data);
 |const char*|payload |回复消息的内容，默认值为NULL|
 
 **返回值**
+
 0：成功，-1：失败
+
 **示例代码**
 ```
 static char mode[10] = {0};
@@ -409,20 +437,30 @@ if (msg) {
 ```
 ### int clear_content()
 **功能描述**
+
 结束上传并清理还未上传云端的数据
+
 **参数**
+
 无
+
 **返回值**
+
 0：成功，-1：失败
 
 ## HttpClient类
 **所属头文件**
+
 baidu_http_client.h
+
 **功能描述**
+
 提供Client端通过http连接server的功能
 ### void register_data_handler(data_out_handler_cb data_hdlr_cb, void* p_usr_ctx)
 **功能描述**
-注册接收server端数据的回调函数|
+
+注册接收server端数据的回调函数
+
 **参数**
 
 |类型|名称|描述|
@@ -431,8 +469,11 @@ baidu_http_client.h
 |void* |p_usr_ctx|传入回调函数的用户参数指针，可以为空|
 
 **返回值**
+
 无
+
 **其它说明**
+
 data_out_handler_cb的定义如下：
 ```
 //to tell data output callback user that if the current data block is first block or last block
@@ -478,7 +519,9 @@ int main()
 ```
 ### e_http_result get(const char* url)
 **功能描述**
+
 根据url连接server，获取媒体文件数据
+
 **参数**
 
 |类型|名称|描述|
@@ -486,6 +529,7 @@ int main()
 |const char* |url|要连接的url地址|
 
 **返回值**
+
 连接成功返回HTTP_OK，e_http_result 定义如下：
 ```
 //http client results
@@ -508,10 +552,15 @@ typedef enum http_result {
 ```
 ## MediaManager类
 **所属头文件**
+
 baidu_media_manager.h
+
 **功能描述**
+
 管理多媒体文件播放，同一时间只能播放单个文件
+
 **类型介绍**
+
 MediaPlayerStatus为media player的状态类型，定义如下
 ```
 enum MediaPlayerStatus {
@@ -522,21 +571,34 @@ enum MediaPlayerStatus {
 ```
 ### static MediaManager& instance()
 **功能描述**
+
 获取MediaManager单例
+
 **参数**
+
 无
+
 **返回值**
+
 MediaManager单例对象
+
 ### bool initialize()
 **功能描述**
+
 初始化MediaManager，第一次调用有效，使用媒体播放功能前必须调用该接口做初始化。
+
 **参数**
+
 无
+
 **返回值**
+
 初始化是否成功
 ### MediaPlayerStatus play_url(const char* url)
 **功能描述**
+
 播放网络媒体文件
+
 **参数**
 
 |类型|名称|描述|
@@ -544,10 +606,13 @@ MediaManager单例对象
 |const char* |url|网络媒体文件的url地址|
 
 **返回值**
+
 media player的上一个状态
 ### MediaPlayerStatus play_local(const char* path)
 **功能描述**
+
 播放本地媒体文件
+
 **参数**
 
 |类型|名称|描述|
@@ -555,50 +620,76 @@ media player的上一个状态
 |const char* |path|本地媒体文件路径|
 
 **返回值**
+
 media player的上一个状态
 ### MediaPlayerStatus pause_or_resume()
 **功能描述**
+
 播放状态下暂停播放，暂停状态下恢复播放，其它状态调用无效
+
 **参数**
+
 无
+
 **返回值**
+
 media player的上一个状态
 ### MediaPlayerStatus stop()
 **功能描述**
+
 停止播放当前文件
+
 **参数**
+
 无
+
 **返回值**
+
 media player的上一个状态
 ### MediaPlayerStatus get_media_player_status()
 **功能描述**
+
 获取media player的当前状态
+
 **参数**
+
 无
+
 **返回值**
+
 media player的当前状态
 ### int register_stop_callback(media_player_stop_callback callback)
 **功能描述**
+
 注册回调函数，该函数在音乐播放结束时会被调用，回调函数最多可注册5个
+
 **参数**
+
 callback为回调函数指针
 ```
 typedef void (*media_player_stop_callback)();
 ``` 
 **返回值**
+
 注册成功返回0，失败返回-1
+
 ### int unregister_stop_callback(media_player_stop_callback callback)
 **功能描述**
+
 注销回调函数
+
 **参数**
+
 callback为回调函数指针
 ```
 typedef void (*media_player_stop_callback)();
 ``` 
 **返回值**
+
 注册成功返回0，失败返回-1
 ### void set_volume(unsigned char vol);
 **功能描述**
+
 设置音量大小
 **参数**
 
@@ -607,29 +698,49 @@ typedef void (*media_player_stop_callback)();
 |unsigned char |vol|音量值，有效范围为0~15|
  
 **返回值**
+
 无
+
 ## RecorderManager类
 **所属头文件**
+
 baidu_recorder_manager.h
+
 **功能描述**
+
 管理录音功能
+
 ### int start()
 **功能描述**
+
 开始录音
+
 **参数**
+
 无
+
 **返回值**
+
 0：成功，-1：失败
+
 ### int stop()
 **功能描述**
+
 结束录音
+
 **参数**
+
 无
+
 **返回值**
+
 0：成功，-1：失败
+
 ### int set_listener(Recorder::IListener* listener)
 **功能描述**
+
 设置监听者，监听者可在回调函数中获得录音状态及数据
+
 **参数**
 
 |类型|名称|描述|
@@ -637,8 +748,11 @@ baidu_recorder_manager.h
 |Recorder::IListener*  |listener|录音状态和数据的监听者|
 
 **返回值**
+
 0：成功，-1：失败
+
 **其它说明**
+
 Recorder::IListener定义如下
 ```
 class IListener {
