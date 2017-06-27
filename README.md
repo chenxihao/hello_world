@@ -167,16 +167,20 @@ mbed compile --source PROJECT_NAME --source dueros-light -DBD_FEATURE_ENABLE_OTA
 直接将编出的工程文件烧录到板子中即可。具体方法有(建议采用第一种)：
 
  - 通过板子自带命令loady
-     1.  连接串口工具；
+     1. 连接串口工具；
      2. 在串口终端出现“count_left=0”之前输入回车，会出现“Boot abort”；
      3. 输入loady指令，等待出现”Ready for binary”后，右键点击选择传输，选择YMODEM，用YMODEM发送；
      4. 选择并传输对应bin文件；
+     
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/d0a99806d66df5feb37c8319ea4e516995027a41)
+
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/4cb71157f645ccd8a4a7719c329e6e774ae75d35)
 
  -  通过Flashtest工具
  RDA Flashtest工具打开后如下，参照图示进行设置：
+ 
  ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/1c0d150f55a7afd51553f53239d585ed694334d4)
+ 
 点击Setup按钮会弹出图下方的Setup窗口，参考图中所示进行设置。
 之后点击Start按钮，后面待出现下面输出后，点击reset按钮即开始烧录。
 ```
