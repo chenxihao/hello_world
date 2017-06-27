@@ -99,6 +99,7 @@ DuerOS Light SDK是基于mbed-os的轻量级设备解决方案。DuerOS Light SD
 1. 创建工程目录，并将DuerOS Light SDK包解压到该目录，目录结构如下：
 
 ![图片](http://bos.nj.bpc.baidu.com/v1/agroup/333b3b78e636b719dfcdb0dcf307e05cf3868ab7)
+
 2. 在工程目录下创建存放开发者自己代码的目录。并在该目录下，创建一个mbed_app.json文件用于配置设备相关的信息，mbed_app.json示例如下：
 ```
 "target_overrides": {
