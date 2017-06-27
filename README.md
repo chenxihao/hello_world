@@ -200,8 +200,11 @@ Waiting for plug in...
 本节将详细介绍DuerOS Light SDK提供给开发者的主要接口类与API，类中未提供说明的public API开发者可忽略，之后会做优化。
 ## Scheduler类
 **所属头文件**
+
 baidu_ca_scheduler.h
+
 **功能描述**
+
 单例类，封装CA模块，提供与云端的交互功能
 ### static Scheduler &instance()
 **功能描述**
