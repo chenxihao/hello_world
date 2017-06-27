@@ -202,19 +202,22 @@ Waiting for plug in...
 **所属头文件**
 
 baidu_ca_scheduler.h
-
 **功能描述**
 
 单例类，封装CA模块，提供与云端的交互功能
 ### static Scheduler &instance()
 **功能描述**
+
 获取Scheduler实例，第一次调用时，会初始化CA模块
 **参数**
+
 无
 **返回值**
+
 Scheduler对象
 ### int set_on_event_listener(IOnEvent* listener)
 **功能描述**
+
 设置事件监听者
 **参数**
 
@@ -223,8 +226,10 @@ Scheduler对象
 |IOnEvent* |listener|Scheduler事件的监听者|
 
 **返回值**
+
 0：成功，-1：失败
 **其它说明**
+
 IOnEvent定义如下：
 ```
 /**
